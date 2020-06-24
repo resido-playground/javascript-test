@@ -8,20 +8,17 @@ function loadJSON(callback) {
             callback(xobj.responseText);
         }
     };
-    xobj.send(null);  
+    xobj.send(null);
 }
 
 window.addEventListener('load', (event) => {
     let h = '<p>スクリプトで追加しました。</p>';
     let p = document.querySelector('p');
     p.insertAdjacentHTML('afterend', h);
-    let tmp = JSON.parse('{"author":"水野敬也","date_read":"2016-mm-dd"}');
-    let a = 0;
 
     loadJSON(function(response) {
         // Parse JSON string into object
         let books = JSON.parse(response);
-        let a = 0;
         books.forEach(book => {
             h = '<p>' + book.title + '</p>';
             p.insertAdjacentHTML('afterend', h);
